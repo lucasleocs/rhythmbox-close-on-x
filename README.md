@@ -2,6 +2,15 @@
 
 A tiny Rhythmbox plugin that makes the window **X** button actually quit Rhythmbox instead of leaving the application running in the background.
 
+## Download
+For the easiest installation, download the latest release:
+
+**[Download Close on X](https://github.com/lucasleocs/rhythmbox-close-on-x/releases/latest)**
+
+Then download `close-on-x-plugin.zip`, extract it, and copy the `close-on-x` folder to:
+
+~/.local/share/rhythmbox/plugins/
+
 ## Why
 
 On some Linux desktop setups, closing the Rhythmbox window hides it while the Rhythmbox process continues running. This plugin listens for the main window being hidden and then requests Rhythmbox's normal application shutdown.
