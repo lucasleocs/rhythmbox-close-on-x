@@ -1,0 +1,9 @@
+[Plugin]
+Loader=python3
+Module=close-on-x
+IAge=2
+Name=Close on X
+Description=Completely quits Rhythmbox when its main window is closed
+Authors=lucasleocs
+Copyright=Copyright © 2026 lucasleocs
+Website=https://github.com/lucasleocs/rhythmbox-close-on-x
