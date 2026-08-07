@@ -5,11 +5,11 @@ A tiny Rhythmbox plugin that makes the window **X** button actually quit Rhythmb
 ## Download
 For the easiest installation, download the latest release:
 
-**[Download Close on X](https://github.com/lucasleocs/rhythmbox-close-on-x/releases/latest)**
+**[Download Close on X](https://github.com/lucasleocs/rhythmbox-close-on-x/releases/latest/download/close-on-x-plugin.zip)**
 
 Then download `close-on-x-plugin.zip`, extract it, and copy the `close-on-x` folder to:
 
-~/.local/share/rhythmbox/plugins/
+`~/.local/share/rhythmbox/plugins/`
 
 ## Why
 
