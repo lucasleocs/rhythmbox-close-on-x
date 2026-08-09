@@ -2,43 +2,14 @@
 
 A tiny Rhythmbox plugin that makes the window **X** button actually quit Rhythmbox instead of leaving the application running in the background.
 
-## Download
+## Quick installation
+
 For the easiest installation, download the latest release:
 
 **[Download Close on X](https://github.com/lucasleocs/rhythmbox-close-on-x/releases/latest/download/close-on-x-plugin.zip)**
 
-Then download `close-on-x-plugin.zip`, extract it, and copy the `close-on-x` folder to:
-
-`~/.local/share/rhythmbox/plugins/`
-
-## Why
-
-On some Linux desktop setups, closing the Rhythmbox window hides it while the Rhythmbox process continues running. This plugin listens for the main window being hidden and then requests Rhythmbox's normal application shutdown.
-
-The goal is simple:
-
-```text
-Click X
-  -> Rhythmbox window closes
-  -> Rhythmbox quits completely
-  -> no Rhythmbox process remains in the background
-```
-
-## Tested on
-
-- Linux Mint 22.3 (Zena)
-- Rhythmbox 3.4.7
-- X11
-
-It may work on other Rhythmbox 3.4.x/Linux setups, but those have not been tested yet.
-
-## Easy installation (no Git required)
-
-This is the recommended method for users who just want to install the plugin.
-
-1. Download the latest `close-on-x-plugin.zip` from the **Releases** page.
-2. Extract the ZIP. It contains a folder named `close-on-x`.
-3. Copy the entire `close-on-x` folder to:
+1. Extract `close-on-x-plugin.zip`.
+2. Copy the `close-on-x` folder to:
 
 ```text
 ~/.local/share/rhythmbox/plugins/
@@ -60,11 +31,34 @@ If you use a graphical file manager such as Nemo, press **Ctrl+H** to show hidde
 
 Create the `plugins` folder if it does not already exist.
 
-4. Open Rhythmbox.
-5. Open **Menu -> Plugins**.
-6. Enable **Close on X**.
+3. Open Rhythmbox.
+4. Open **Menu -> Plugins**.
+5. Enable **Close on X**.
 
 Restart Rhythmbox if the plugin does not appear immediately.
+
+## Why
+
+On some Linux desktop setups, closing the Rhythmbox window hides it while the Rhythmbox process continues running.
+
+This plugin detects when the main window is hidden after closing it and requests Rhythmbox's normal application shutdown.
+
+The goal is simple:
+
+```text
+Click X
+  -> Rhythmbox window closes
+  -> Rhythmbox quits completely
+  -> no Rhythmbox process remains in the background
+```
+
+## Tested on
+
+* Linux Mint 22.3 (Zena)
+* Rhythmbox 3.4.7
+* X11
+
+It may work on other Rhythmbox 3.4.x/Linux setups, but those have not been tested yet.
 
 ## Other installation methods
 
@@ -129,7 +123,9 @@ Restart Rhythmbox afterward.
 
 ## How it works
 
-Rhythmbox plugins use libpeas. This plugin connects to the main window's `hide` signal. When the main window is hidden, the plugin calls Rhythmbox's normal shell quit method:
+Rhythmbox plugins use libpeas. This plugin connects to the main window's `hide` signal.
+
+On the tested setup, clicking the window **X** causes Rhythmbox to hide its main window while leaving the application running. When this happens, the plugin calls Rhythmbox's normal shell quit method:
 
 ```python
 self.object.quit()
@@ -137,12 +133,14 @@ self.object.quit()
 
 A small guard prevents the shutdown path from being requested more than once.
 
+Minimizing Rhythmbox or placing another window in front of it does not trigger this behavior.
+
 ## Notes
 
-- This plugin intentionally changes the behavior of the window **X** button.
-- It does not add a background service, daemon, systemd unit, or PPA.
-- It only installs files in the current user's Rhythmbox plugin directory.
-- If you prefer Rhythmbox to remain available in the background after closing the window, do not use this plugin.
+* This plugin intentionally changes the behavior of the window **X** button.
+* It does not add a background service, daemon, systemd unit, or PPA.
+* It only installs files in the current user's Rhythmbox plugin directory.
+* If you prefer Rhythmbox to remain available in the background after closing the window, do not use this plugin.
 
 ## Troubleshooting
 
